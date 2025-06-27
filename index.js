@@ -1,5 +1,6 @@
 var gamePattern = [];
 var buttonColours = ["red", "blue", "green", "yellow"];
+var currentVolume = 0.3;
 
 function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
@@ -13,24 +14,31 @@ function nextSequence() {
 }
 
 function makeSound(color) {
+    var sound;
+
     switch (color) {
         case "red":
-            var redSound = new Audio("sounds/red.mp3");
-            redSound.play();
+            sound = new Audio("sounds/red.mp3");
             break;
         case "blue":
-            var blueSound = new Audio("sounds/blue.mp3");
-            blueSound.play();
+            sound = new Audio("sounds/blue.mp3");
             break;
         case "green":
-            var greenSound = new Audio("sounds/green.mp3");
-            greenSound.play();
+            sound = new Audio("sounds/green.mp3");
             break;
         case "yellow":
-            var yellowSound = new Audio("sounds/yellow.mp3");
-            yellowSound.play();
+            sound = new Audio("sounds/yellow.mp3");
             break;
         default:
             console.log("Nieznany kolor: " + color);
+            return;
     }
+
+    sound.volume = currentVolume; // <--- to jest kluczowe!
+    sound.play();
 }
+
+
+$("#volumeRange").on("input", function () {
+    currentVolume = parseFloat(this.value);
+});
