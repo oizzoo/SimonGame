@@ -153,16 +153,16 @@ body {
 @media (max-width: 768px) {
   .container {
     width: 90%;
-    display: flex;         /* enable flexbox layout */
-    flex-wrap: wrap;       /* allow wrapping to next row */
-    justify-content: center; /* center the buttons horizontally */
+    display: flex;       /* enable flexbox */
+    flex-wrap: wrap;     /* allow wrapping to next line */
+    justify-content: center; /* center buttons horizontally */
   }
 
   .btn {
-    width: 40vw;
-    height: 40vw;
-    margin: 10px;
-    flex: 0 0 45%;         /* two buttons per row with margin */
+    width: 45%;          /* about half container width */
+    height: 40vw;        /* keep height proportional */
+    margin: 10px 2.5%;   /* add margin to create spacing */
+    box-sizing: border-box; /* include border in size */
   }
 
   #level-title {
