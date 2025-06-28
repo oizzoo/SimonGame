@@ -1,22 +1,70 @@
+/* -------------------- Base Styles -------------------- */
 body {
   text-align: center;
   background-color: #011F3F;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------- Typography -------------------- */
+#level-title,
+#high-score,
+#reset-score,
+#current-score,
+#volume-control {
+  font-family: 'Press Start 2P', cursive;
 }
 
 #level-title {
-  font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
-  margin:  5%;
+  margin: 5%;
   color: #FEF2BF;
 }
 
-.container {
-  display: block;
-  width: 50%;
-  margin: auto;
-
+#high-score {
+  font-size: 1.2rem;
+  color: #FEF2BF;
+  margin-bottom: 20px;
 }
 
+#current-score {
+  font-size: 18px;
+  color: #333333;
+  margin: 10px 0 40px;
+  text-align: center;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+#current-score:hover {
+  color: #007BFF;
+}
+
+/* -------------------- Buttons -------------------- */
+#reset-score {
+  font-size: 0.8rem;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+  background-color: #FEF2BF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#reset-score:hover {
+  background-color: #ffd966;
+  transform: scale(1.05);
+}
+
+/* -------------------- Game Container -------------------- */
+.container {
+  display: none;
+  width: 50%;
+  margin: auto;
+}
+
+/* -------------------- Game Buttons -------------------- */
 .btn {
   margin: 25px;
   display: inline-block;
@@ -24,11 +72,6 @@ body {
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
-}
-
-.game-over {
-  background-color: red;
-  opacity: 0.8;
 }
 
 .red {
@@ -52,14 +95,78 @@ body {
   background-color: grey;
 }
 
+/* -------------------- Special Effects -------------------- */
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+/* -------------------- Volume Control -------------------- */
 #volume-control {
   margin-bottom: 20px;
   color: #FEF2BF;
-  font-family: 'Press Start 2P', cursive;
   font-size: 1rem;
 }
 
 #volumeRange {
   width: 200px;
   margin-left: 10px;
+}
+
+/* -------------------- Floating Animation -------------------- */
+@keyframes floatUpDown {
+  0%   { transform: translateY(-8px); opacity: 0.8; }
+  50%  { transform: translateY(0px); opacity: 1; }
+  100% { transform: translateY(-8px); opacity: 0.8; }
+}
+
+.floating-text {
+  animation: floatUpDown 2s ease-in-out infinite;
+}
+
+/* -------------------- Hidden Elements on Load -------------------- */
+.container,
+#high-score,
+#reset-score {
+  display: none;
+}
+
+#start-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  padding: 15px 25px;
+  margin: 20px auto;
+  background-color: #FEF2BF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #011F3F;
+  display: block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#start-btn:hover {
+  background-color: #ffd966;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  #level-title {
+    display: none;
+  }
+
+  .btn {
+    width: 40vw;
+    height: 40vw;
+    margin: 10px;
+  }
+
+  #level-title {
+    font-size: 1.5rem;
+    margin: 30px 0;
+  }
 }
